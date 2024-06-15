@@ -1,13 +1,12 @@
-import Expenses from '@/components/Expenses'
-import Income from '@/components/Income'
+import FinancialActivityComponent from '@/components/statistics/financial-activity'
 import { Colors } from '@/constants/Colors'
 import { Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 import { Pressable, ScrollView, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+
 export default function StatisticScreen() {
-     const [type, setType] = useState<string>('income')
      return (
           <SafeAreaView
                style={{
@@ -25,7 +24,7 @@ export default function StatisticScreen() {
                          borderBottomColor: '#4A4A4A',
                     }}
                >
-                    <Text> {"<"} May 2024 {">"} </Text>
+                    <Text> Financial Activity </Text>
                </View>
                <View
                     style={{
@@ -33,38 +32,6 @@ export default function StatisticScreen() {
                          flexDirection: 'row',
                     }}
                >
-                    <Pressable
-                         style={{
-                              flex: 1,
-                              paddingVertical: 20,
-                              backgroundColor: type === 'income' ? Colors.light.background : 'white',
-                              alignItems: 'center',
-                         }}
-                         onPress={() => setType('income')}
-                    >
-                         <View
-                              style={{
-                                   display: 'flex',
-                                   flexDirection: 'column',
-                                   alignItems: 'center',
-                              }}
-                         >
-                              <Text>Income</Text>
-                              <Text>-------</Text>
-                         </View>
-                    </Pressable>
-                    <Pressable
-                         style={{
-                              flex: 1,
-                              paddingVertical: 20,
-                              backgroundColor: type === 'expenses' ? Colors.light.background : 'white',
-                              alignItems: 'center',
-                         }}
-                         onPress={() => setType('expenses')}
-                    >
-                         <Text>Expenses</Text>
-                         <Text>-------</Text>
-                    </Pressable>
                </View>
                <ScrollView
                     style={{
@@ -72,11 +39,7 @@ export default function StatisticScreen() {
                          flex: 1,
                     }}
                >
-                    {type === 'income' ? (
-                         <Income />
-                    ) : (
-                         <Expenses />
-                    )}
+                    <FinancialActivityComponent/>
                </ScrollView>
                <Pressable>
                     <View
