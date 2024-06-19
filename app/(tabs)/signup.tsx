@@ -51,6 +51,20 @@ function SignUp() {
         <TouchableOpacity style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
+        <View style={styles.orContainer}>
+          <View style={styles.line} />
+          <Text style={styles.orText}>or</Text>
+          <View style={styles.line} />
+        </View>
+        <TouchableOpacity style={styles.buttonwith} onPress={handleSignUp}>
+          <Text style={styles.buttonTextwith}>Use without account</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.agreementText}>
+          By clicking continue, you agree to our{' '}
+          <Text style={styles.linkText}>Terms of Service</Text> and{' '}
+          <Text style={styles.linkText}>Privacy Policy</Text>
+        </Text>
       </View>
     </View>
   );
@@ -102,13 +116,48 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     padding: 15,
-    backgroundColor: '#007BFF',
+    backgroundColor: '#000',
     borderRadius: 5,
     alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
+  },
+  buttonwith: {
+    width: '80%',
+    padding: 15,
+    backgroundColor: '#CBD5E0',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonTextwith: {
+    color: '#000',
+    fontSize: 16,
+  },
+  orContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+    width: '80%',
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#CBD5E0',
+  },
+  orText: {
+    marginHorizontal: 10,
+    color: '#CBD5E0',
+  },
+  agreementText: {
+    textAlign: 'center',
+    color: '#666',
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  linkText: {
+    color: '#007BFF',
   },
 });
 

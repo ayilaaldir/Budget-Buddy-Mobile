@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Modal,
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function FinanceScreen() {
+  // Your code for the FinanceScreen component
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [amount, setAmount] = useState('');
