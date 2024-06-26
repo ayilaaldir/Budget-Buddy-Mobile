@@ -2,6 +2,7 @@ import React, { useState,Dispatch,SetStateAction } from 'react';
 import { Image, Pressable, Text, TextInput, View, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '@/constants/Colors';
+import LoginDisplay from './login';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface SignUpProps {
@@ -11,11 +12,15 @@ interface SignUpProps {
      setShowSignUp: Dispatch<SetStateAction<boolean>>;
    }
 
-   
+
 export default function SignUpDisplay({ setIsAuth }: { setIsAuth: (isAuth: boolean) => void }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showLogin, setShowLogin] = useState(false);
 
+    if (showLogin) {
+     return <SignUpDisplay setIsAuth={setIsAuth} />;
+     }
     const handleSignUp = async () => {
         try {
             const response = await fetch('API_SIGN_UP_ENDPOINT', {
@@ -104,6 +109,9 @@ export default function SignUpDisplay({ setIsAuth }: { setIsAuth: (isAuth: boole
             <Pressable onPress={handleSignUp} style={styles.button}>
                 <Text style={styles.buttonText}>Sign Up</Text>
             </Pressable>
+            <Pressable onPress={() => setShowLogin(true)} style={styles.button}>
+                 <Text style={styles.buttonText}>Back To Login</Text>
+             </Pressable>
         </SafeAreaView>
     );
 }

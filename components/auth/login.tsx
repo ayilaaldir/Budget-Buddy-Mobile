@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Image, Pressable, Text, TextInput, View, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '@/constants/Colors';
-import SignUpDisplay from './signup';
 
 interface LoginProps {
      setIsAuth: (isAuth: boolean) => void;
@@ -12,14 +11,30 @@ interface LoginProps {
    
    const LoginDisplay: React.FC<LoginProps> = ({ setIsAuth, setUsername: setGlobalUsername }) => {
      const [username, setUsername] = useState(''); // Local username state
-     const [password, setPassword] = useState('');
-   
-     const [showSignUp, setShowSignUp] = useState(false);
- 
-     if (showSignUp) {
-         return <SignUpDisplay setIsAuth={setIsAuth} />;
-     }
+     const [password, setPassword] = useState(''); 
      
+     const handleSignUp = async () => {
+          try {
+              const response = await fetch('http://141.147.151.192:8080/register_user.php', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+              });
+  
+              const data = await response.json();
+              if (response.ok && data.status === "success") {
+                  Alert.alert("Success", data.message);
+                  setIsAuth(true); 
+              } else {
+                  throw new Error(data.message || "Unable to register");
+              }
+          } catch (error) {
+              Alert.alert("Registration Error", error.message);
+          }
+      };
+      
      const handleLogin = async () => {
       try {
           const response = await fetch('http://141.147.151.192:8080/login.php', {
@@ -107,7 +122,7 @@ interface LoginProps {
              <Pressable onPress={handleLogin} style={styles.button}>
                  <Text style={styles.buttonText}>Log in</Text>
              </Pressable>
-             <Pressable onPress={() => setShowSignUp(true)} style={styles.button}>
+             <Pressable onPress={handleSignUp} style={styles.button}>
                  <Text style={styles.buttonText}>Sign Up</Text>
              </Pressable>
          </SafeAreaView>

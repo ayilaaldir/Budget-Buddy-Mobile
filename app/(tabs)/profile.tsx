@@ -1,7 +1,8 @@
 import LoginDisplay from '@/components/auth/login';
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default function ProfileScreen() {
     const [isAuth, setIsAuth] = useState(false);
@@ -29,10 +30,45 @@ export default function ProfileScreen() {
         setIsAuth(false);
         setUserId(null);
         setUsername(null);
-        setShowSignUp(false); // Ensuring the SignUp form is not shown after sign out
     };
 
-    // Simplified rendering logic
+    const styles = {
+     container: {
+         flex: 1,
+         backgroundColor: Colors.dark.background,
+         paddingHorizontal: 30,
+         alignItems: 'center',
+         justifyContent: 'center',
+     },
+     image: {
+         width: 70,
+         height: 70,
+     },
+     imageText: {
+         height: 70,
+         resizeMode: 'contain',
+     },
+     input: {
+         minWidth: '100%',
+         marginBottom: 10,
+         paddingHorizontal: 10,
+         paddingVertical: 8,
+         borderRadius: 4,
+         backgroundColor: 'white',
+     },
+     button: {
+         backgroundColor: "white",
+         minWidth: '100%',
+         paddingVertical: 10,
+         borderRadius: 999,
+         alignItems: "center",
+         marginTop: 10,
+     },
+     buttonText: {
+         color: "#646464",
+     }
+ };
+
     if (!isAuth) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -41,11 +77,12 @@ export default function ProfileScreen() {
         );
     }
 
-    // Display for logged-in users
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Welcome, {username}! Your user ID is {userID}.</Text>
-            <Button title="Sign Out" onPress={handleSignOut} />
+               <Text>Welcome, {username}! Your user ID is {userID}.</Text>
+               <Pressable onPress={handleSignOut} style={styles.button}>
+                    <Text style={styles.buttonText}>Sign Out</Text>
+               </Pressable>
         </View>
     );
 }
