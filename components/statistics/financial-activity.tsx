@@ -36,7 +36,6 @@ const StatisticsComponent = () => {
     try {
       setLoading(true);
       const user_id = await AsyncStorage.getItem('userID');
-      console.log(user_id, selectedMonthTo, selectedYearTo);
       const url = `http://141.147.151.192:8080/get_transaction.php?year=${selectedYearTo}&month=${selectedMonthTo + 1}&user_id=${user_id}`;
       const response = await fetch(url);
       if (!response.ok) {

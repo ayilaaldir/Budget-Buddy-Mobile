@@ -26,6 +26,14 @@ const inout = [
   { value: "out", label: "Expenses" },
 ];
 
+const getFormattedDate = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Convert month to 2 digits
+    const day = date.getDate().toString().padStart(2, '0'); // Convert day to 2 digits
+    return `${year}-${month}-${day}`;
+  };
+
 export default function TransactionForm() {
   const [userID, setUserID] = useState(null);
   const [username, setUsername] = useState(null);
@@ -76,7 +84,7 @@ export default function TransactionForm() {
       <Formik
         validationSchema={addIncomeSchema}
         initialValues={{
-          date: '',
+          date: getFormattedDate(),
           amount: '',
           category: '',
           inout: '',
@@ -110,12 +118,13 @@ export default function TransactionForm() {
                 <Text style={styles.buttonText}>Refresh</Text>
             </TouchableOpacity>
             <TextInput
-              style={styles.input}
-              onChangeText={handleChange('date')}
-              value={values.date}
-              placeholder="YYYY-MM-DD"
-              placeholderTextColor="#ccc"
+                style={styles.input}
+                onChangeText={handleChange('date')}
+                value={values.date}
+                placeholder={`Date (Today: ${getFormattedDate()})`} // Using it in placeholder
+                placeholderTextColor="#ccc"
             />
+
             {errors.date && touched.date && <Text style={styles.error}>{errors.date}</Text>}
 
             <TextInput
