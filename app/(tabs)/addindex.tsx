@@ -121,7 +121,7 @@ export default function TransactionForm() {
                 style={styles.input}
                 onChangeText={handleChange('date')}
                 value={values.date}
-                placeholder={`Date (Today: ${getFormattedDate()})`}
+                placeholder={"YYYY-MM-DD"}
                 placeholderTextColor="#ccc"
             />
 
