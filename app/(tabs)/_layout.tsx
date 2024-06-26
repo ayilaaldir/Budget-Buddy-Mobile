@@ -3,8 +3,6 @@ import React from 'react';
 import { View, Pressable } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import SignIn from './signin';
-
 type IconName = 'book-outline' | 'bar-chart-outline' | 'wallet-outline' | 'person-outline';
 
 type TabConfigurations = {
@@ -66,7 +64,7 @@ export default function TabLayout() {
           }}
         >
           {state.routes.sort((a, b) => {
-            console.log('Checking configurations:', a.name, tabConfigurations[a.name], b.name, tabConfigurations[b.name]);
+            //console.log('Checking configurations:', a.name, tabConfigurations[a.name], b.name, tabConfigurations[b.name]);
             return tabConfigurations[a.name].order - tabConfigurations[b.name].order;
           }).map((route, index) => {
             const isFocused = state.index === index;
