@@ -63,7 +63,7 @@ const pickerSelectStyles = {
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30,
     marginBottom: 10,
   },
   inputAndroid: {
@@ -74,7 +74,7 @@ const pickerSelectStyles = {
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30,
     marginBottom: 10,
   },
 };

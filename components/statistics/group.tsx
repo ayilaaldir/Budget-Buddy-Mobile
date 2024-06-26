@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native'; // Assuming 'Stack' should be 'View' for layout purposes
+import { Text, View } from 'react-native';
 
 interface FinancialActivityGroupsProps {
     date: string;

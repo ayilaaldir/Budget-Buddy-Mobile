@@ -6,7 +6,7 @@ import { Colors } from '@/constants/Colors';
 
 interface LoginProps {
      setIsAuth: (isAuth: boolean) => void;
-     setUsername: (username: string | null) => void; // This prop is passed from the parent component
+     setUsername: (username: string | null) => void;
    }
    
    const LoginDisplay: React.FC<LoginProps> = ({ setIsAuth, setUsername: setGlobalUsername }) => {
