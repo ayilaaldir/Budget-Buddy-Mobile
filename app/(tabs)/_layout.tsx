@@ -34,18 +34,8 @@ const tabConfigurations: TabConfigurations = {
     icon: 'person-outline',
     label: 'Profile',
   },
-  signin: {
+  addindex: {
     order: 5,
-    icon: 'person-outline',
-    label: 'Sign In',
-  },
-  signup: {
-    order: 6,
-    icon: 'person-outline',
-    label: 'Sign Up',
-  },
-  addtransactions: {
-    order: 7,
     icon: 'person-outline',
     label: 'Add Transaction',
   },

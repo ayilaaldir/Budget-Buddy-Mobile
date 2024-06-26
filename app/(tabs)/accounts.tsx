@@ -146,33 +146,6 @@ export default function AccountsScreen() {
                          </View>
                     </View>
                </ScrollView>
-               <Pressable>
-                    <View
-                         style={{
-                              backgroundColor: "white",
-                              width: 60,
-                              height: 60,
-                              borderRadius: 999,
-                              position: 'absolute',
-                              bottom: 20,
-                              right: 20,
-                              shadowColor: "#000",
-                              shadowOffset: {
-                                   width: 0,
-                                   height: 2,
-                              },
-                              shadowOpacity: 0.25,
-                              shadowRadius: 3.84,
-
-                              elevation: 5,
-                              display: 'flex',
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                         }}
-                    >
-                         <Ionicons name="add" size={50} color={Colors.light.blueButton} />
-                    </View>
-               </Pressable>
           </SafeAreaView>
      )
 }

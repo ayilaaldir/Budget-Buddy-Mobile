@@ -10,7 +10,7 @@ interface LoginProps {
    }
    
    const LoginDisplay: React.FC<LoginProps> = ({ setIsAuth, setUsername: setGlobalUsername }) => {
-     const [username, setUsername] = useState(''); // Local username state
+     const [username, setUsername] = useState('');
      const [password, setPassword] = useState(''); 
      
      const handleSignUp = async () => {
@@ -18,7 +18,7 @@ interface LoginProps {
               const response = await fetch('http://141.147.151.192:8080/register_user.php', {
                   method: 'POST',
                   headers: {
-                      'Content-Type': 'application/json',
+                      'Content-Type': 'application/x-www-form-urlencoded',
                   },
                   body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
               });
@@ -26,7 +26,8 @@ interface LoginProps {
               const data = await response.json();
               if (response.ok && data.status === "success") {
                   Alert.alert("Success", data.message);
-                  setIsAuth(true); 
+                  setIsAuth(true);
+                  await handleLogin();
               } else {
                   throw new Error(data.message || "Unable to register");
               }

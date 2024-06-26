@@ -32,9 +32,6 @@ const App = () => {
         ))}
       </View>
       {renderTabContent()}
-      <TouchableOpacity style={styles.addButton}>
-        <Ionicons name="add" size={24} color="white" />
-      </TouchableOpacity>
     </View>
   );
 };
